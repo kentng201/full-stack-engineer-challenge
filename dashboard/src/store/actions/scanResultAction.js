@@ -11,7 +11,7 @@ function setResults(results) {
 export function fetchResult() {
   return async (dispatch) => {
     try {
-      const results = await api().get('/api/scans');
+      const results = await api().get('/api/results');
       await dispatch(setResults(results));
       return results;
     } catch (error) {
@@ -22,6 +22,6 @@ export function fetchResult() {
 
 export function createScanResult(result) {
   return async () => {
-    await api().post('/api/scans', result);
+    await api().post('/api/results', result);
   };
 }

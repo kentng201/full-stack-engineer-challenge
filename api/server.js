@@ -16,12 +16,12 @@ app.use(function(req, res, next) {
 });
 app.use(bodyParser.json());
 
-app.get('/api/scans', async (req, res) => {
+app.get('/api/results', async (req, res) => {
   const result = await Result.find();
   return res.status(200).json(result);
 });
 
-app.post('/api/scans', async (req, res) => {
+app.post('/api/results', async (req, res) => {
   try {
     const result = new Result(req.body);
     await result.save();

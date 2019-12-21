@@ -53,11 +53,13 @@ class ResultListScreen extends Component {
         }}
         columns={[
           { title: 'Repo Name (Findings)', field: 'repositoryName', cellStyle: { width: '50%' }, render:
-        rowData => <div><span children={rowData.repositoryName} style={{ marginRight: '15px' }}/>{
-          rowData.findingCount
-            ? <Badge badgeContent={rowData.findingCount} color="error" /> 
-            : null
-        }</div>
+            rowData => <div>
+              <span children={rowData.repositoryName} style={{ marginRight: '15px' }}/>
+              {rowData.findingCount
+                ? <Badge badgeContent={rowData.findingCount} color="error" /> 
+                : null
+              }
+            </div>
           },
           { title: 'Status', field: 'status', cellStyle: { width: '10%' } },
           { title: 'Timestamp', field: 'timestamp', cellStyle: { width: '20%' } },
