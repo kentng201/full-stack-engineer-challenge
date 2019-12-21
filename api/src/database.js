@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const server = '192.168.99.100:27017';
+const server = process.env.DB_HOST ||'localhost:27017';
 const database = 'db';
 const user = 'client-user';
 const pass = 'secret';

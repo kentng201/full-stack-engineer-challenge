@@ -25,8 +25,12 @@ let resultSchema = new mongoose.Schema({
         required: true,
       },
       positions: {
-        type: String,
-        required: true,
+        begin: {
+          line: {
+            type: Number,
+            required: true,
+          },
+        },
       },
     },
     metadata: {
@@ -46,11 +50,9 @@ let resultSchema = new mongoose.Schema({
   },
   scanningAt: {
     type: String,
-    required: true,
   }, 
   finishedAt: {
     type: String,
-    required: true,
   },
 });
 
