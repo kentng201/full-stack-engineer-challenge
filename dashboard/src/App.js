@@ -1,19 +1,36 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 import "./App.css";
+
+import {
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom";
+
+import { SnackbarProvider } from 'notistack';
+import NavBar from './components/titleBar/NavBar';
+import ResultListScreen from './screens/ResultListScreen';
+import ResultScreen from './screens/ResultScreen';
+import ResultSubmitForm from './screens/ResultSubmitForm';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Provider store={store}>
+        <SnackbarProvider maxSnack={3}>
+          <Router>
+            <NavBar />
+            <div style={{marginTop: '80px', marginLeft: '30px', marginRight: '30px'}}>
+                <div>
+                  <Route exact path="/" component={ResultListScreen} />
+                  <Route path="/scan-detail/:id" component={ResultScreen} />
+                  <Route path="/form" component={ResultSubmitForm} />
+                </div>
+            </div>
+          </Router>
+        </SnackbarProvider>
+      </Provider>
     );
   }
 }
